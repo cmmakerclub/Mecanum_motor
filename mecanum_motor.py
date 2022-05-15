@@ -81,6 +81,22 @@ class Mecanum():
         _value = self.value_limit(_value, min=0.0, max=15000)
         self.bus_device.write(struct.pack('<Bi', 0x1E, int(_value)))
     
+    def Set_B_motor1(self, _value = 0):
+        _value = self.value_limit(_value, min=0.0, max=5)
+        self.bus_device.write(struct.pack('<Bi', 0x30, int(_value)))
+    
+    def Set_B_motor2(self, _value = 0):
+        _value = self.value_limit(_value, min=0.0, max=5)
+        self.bus_device.write(struct.pack('<Bi', 0x31, int(_value)))
+        
+    def Set_B_motor3(self, _value = 0):
+        _value = self.value_limit(_value, min=0.0, max=5)
+        self.bus_device.write(struct.pack('<Bi', 0x32, int(_value)))
+        
+    def Set_B_motor4(self, _value = 0):
+        _value = self.value_limit(_value, min=0.0, max=5)
+        self.bus_device.write(struct.pack('<Bi', 0x33, int(_value)))
+        
     def Read_battery(self):
         result = bytearray(4)
         self.bus_device.write_then_readinto(bytes([0x20]),result)
