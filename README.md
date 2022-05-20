@@ -6,4 +6,4 @@
 # sudo pip3 install Jetson.GPIO
 # sudo pip3 install Adafruit-Blinka==4.5.0
 # sudo pip3 install adafruit-circuitpython-busdevice==5.1.0
-# sudo pip3 install Adafruit-PlatformDetectช2.6.0
+# sudo pip3 install Adafruit-PlatformDetect==2.6.0
