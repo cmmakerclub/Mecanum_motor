@@ -1,0 +1,23 @@
+Mecanum	KEYWORD1
+
+begin KEYWORD2
+Set_motorxyz  KEYWORD2
+Set_kp KEYWORD2
+Set_ki KEYWORD2
+Set_kd KEYWORD2
+Set_motor_max_rpm KEYWORD2
+Set_max_rpm_ratio KEYWORD2
+Set_motor_operating_voltage KEYWORD2
+Set_motor_power_max_voltage KEYWORD2
+Set_wheel_diameter KEYWORD2
+Set_wheels_y_distance KEYWORD2
+Set_motor1_invert KEYWORD2
+Set_motor2_invert KEYWORD2
+Set_motor3_invert KEYWORD2
+Set_motor4_invert KEYWORD2
+Set_encoder_CPR KEYWORD2
+Set_B_motor1 KEYWORD2
+Set_B_motor2 KEYWORD2
+Set_B_motor3 KEYWORD2
+Set_B_motor4 KEYWORD2
+Read_battery KEYWORD2
