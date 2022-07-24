@@ -20,79 +20,79 @@ class Mecanum():
         _valuez = self.value_limit(_valuez, min=-1.0, max=1.0)
         datas1 = struct.pack('>B', int(2))
         datas2 = struct.pack('fff', float(_valuex), float(_valuey), float(_valuez))
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,datas1,datas2)
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,list(datas1),list(datas2))
 
     def Set_kp(self, _value = 0.1):
         _value = self.value_limit(_value, min=0.0, max=600.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x11,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x11,list(struct.pack('f', float(_value))))
         
     def Set_ki(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=600.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x12,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x12,list(struct.pack('f', float(_value))))
         
     def Set_kd(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=600.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x13,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x13,list(struct.pack('f', float(_value))))
         
     def Set_motor_max_rpm(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=1000.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x14,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x14,list(struct.pack('i', int(_value))))
     
     def Set_max_rpm_ratio(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=1)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x15,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x15,list(struct.pack('f', float(_value))))
     
     def Set_motor_operating_voltage(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=14)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x16,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x16,list(struct.pack('f', float(_value))))
         
     def Set_motor_power_max_voltage(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=14)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x17,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x17,list(struct.pack('f', float(_value))))
     
     def Set_wheel_diameter(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=1)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x18,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x18,list(struct.pack('f', float(_value))))
     
     def Set_wheels_y_distance(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=1)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x19,struct.pack('f', float(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x19,list(struct.pack('f', float(_value))))
         
     def Set_motor1_invert(self, _value = 0):
         _value = self.value_limit(_value, min=-1.0, max=1.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1A,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1A,list(struct.pack('i', int(_value))))
         
     def Set_motor2_invert(self, _value = 0):
         _value = self.value_limit(_value, min=-1.0, max=1.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1B,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1B,list(struct.pack('i', int(_value))))
         
     def Set_motor3_invert(self, _value = 0):
         _value = self.value_limit(_value, min=-1.0, max=1.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1C,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1C,list(struct.pack('i', int(_value))))
         
     def Set_motor4_invert(self, _value = 0):
         _value = self.value_limit(_value, min=-1.0, max=1.0)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1D,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1D,list(struct.pack('i', int(_value))))
         
     def Set_encoder_CPR(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=15000)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1E,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x1E,list(struct.pack('i', int(_value))))
     
     def Set_B_motor1(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=5)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x30,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x30,list(struct.pack('i', int(_value))))
     
     def Set_B_motor2(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=5)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x31,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x31,list(struct.pack('i', int(_value))))
         
     def Set_B_motor3(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=5)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x32,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x32,list(struct.pack('i', int(_value))))
         
     def Set_B_motor4(self, _value = 0):
         _value = self.value_limit(_value, min=0.0, max=5)
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x33,struct.pack('i', int(_value)))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x33,list(struct.pack('i', int(_value))))
         
 #     def Read_battery(self):
 #         result = bytearray(4)
