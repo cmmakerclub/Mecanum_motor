@@ -20,7 +20,7 @@ class Mecanum():
         _valuez = self.value_limit(_valuez, min=-1.0, max=1.0)
         datas1 = struct.pack('>B', int(2))
         datas2 = struct.pack('fff', float(_valuex), float(_valuey), float(_valuez))
-        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,datas1,list(datas2))
+        self.bus_device.write_i2c_block_data(self.DEVICE_ADDRESS,0x02,list(datas2))
 
     def Set_kp(self, _value = 0.1):
         _value = self.value_limit(_value, min=0.0, max=600.0)
