@@ -1,8 +1,8 @@
 # Mecanum_motor
 <img src="1.png"/>
 <img src="2.png"/>
-<img src="5.png"/>
-<img src="6.png"/>
+<img src="5.JPG"/>
+<img src="6.JPG"/>
 
 # ถ้าเป็น jetson nano ต้องลง I2C ให้เรียบร้อยด้วย
 # sudo pip3 install Jetson.GPIO
