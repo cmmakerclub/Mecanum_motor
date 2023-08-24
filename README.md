@@ -4,6 +4,7 @@
 <img src="5.JPG"/>
 <img src="6.JPG"/>
 <img src="7.png"/>
+<img src="9.JPG"/>
 
 # ถ้าเป็น jetson nano ต้องลง I2C ให้เรียบร้อยด้วย
 # sudo pip3 install Jetson.GPIO
