@@ -2,7 +2,7 @@
 #define __Mecanum_motor_CPP__
 
 #include "Arduino.h"
-#include<Mecanum_motor.h>
+#include <Mecanum_motor.h>
 
 Mecanum::Mecanum(int address, TwoWire* bus) {
 	this->addr = address;
@@ -59,7 +59,7 @@ void Mecanum::Set_kd(float _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_motor_max_rpm(int _value){
+void Mecanum::Set_motor_max_rpm(int32_t _value){
 	_value = (int)value_limit(_value, 0.0, 1000.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -113,7 +113,7 @@ void Mecanum::Set_wheels_y_distance(float _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_motor1_invert(int _value){
+void Mecanum::Set_motor1_invert(int32_t _value){
 	_value = (int)value_limit(_value, -1.0, 1.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -122,7 +122,7 @@ void Mecanum::Set_motor1_invert(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_motor2_invert(int _value){
+void Mecanum::Set_motor2_invert(int32_t _value){
 	_value = (int)value_limit(_value, -1.0, 1.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -131,7 +131,7 @@ void Mecanum::Set_motor2_invert(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_motor3_invert(int _value){
+void Mecanum::Set_motor3_invert(int32_t _value){
 	_value = (int)value_limit(_value, -1.0, 1.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -140,7 +140,7 @@ void Mecanum::Set_motor3_invert(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_motor4_invert(int _value){
+void Mecanum::Set_motor4_invert(int32_t _value){
 	_value = (int)value_limit(_value, -1.0, 1.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -149,7 +149,7 @@ void Mecanum::Set_motor4_invert(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_encoder_CPR(int _value){
+void Mecanum::Set_encoder_CPR(int32_t _value){
 	_value = (int)value_limit(_value, 0.0, 15000.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -158,7 +158,7 @@ void Mecanum::Set_encoder_CPR(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_B_motor1(int _value){
+void Mecanum::Set_B_motor1(int32_t _value){
 	_value = (int)value_limit(_value, 0.0, 5.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -167,7 +167,7 @@ void Mecanum::Set_B_motor1(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_B_motor2(int _value){
+void Mecanum::Set_B_motor2(int32_t _value){
 	_value = (int)value_limit(_value,0.0,5.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -176,7 +176,7 @@ void Mecanum::Set_B_motor2(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_B_motor3(int _value){
+void Mecanum::Set_B_motor3(int32_t _value){
 	_value = (int)value_limit(_value,0.0,5.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -185,7 +185,7 @@ void Mecanum::Set_B_motor3(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
-void Mecanum::Set_B_motor4(int _value){
+void Mecanum::Set_B_motor4(int32_t _value){
 	_value = (int)value_limit(_value,0.0,5.0);
 	byte datax[4];
 	memcpy(&datax, &_value, 4);
@@ -194,19 +194,171 @@ void Mecanum::Set_B_motor4(int _value){
 	this->wire->write(datax, 4); 
 	this->wire->endTransmission();
 }
+void Mecanum::Set_mode(uint8_t _value){
+	_value = value_limit(_value, 0, 1);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x40);
+	this->wire->write(_value); 
+	this->wire->endTransmission();
+}
+void Mecanum::Set_motor1(float _value){
+	_value = value_limit(_value, -3.0, 3.0);
+	byte datax[4];
+	memcpy(&datax, &_value, 4);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x41);
+	this->wire->write(datax, 4); 
+	this->wire->endTransmission();
+}
+void Mecanum::Set_motor2(float _value){
+	_value = value_limit(_value, -3.0, 3.0);
+	byte datax[4];
+	memcpy(&datax, &_value, 4);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x42);
+	this->wire->write(datax, 4); 
+	this->wire->endTransmission();
+}
+void Mecanum::Set_motor3(float _value){
+	_value = value_limit(_value, -3.0, 3.0);
+	byte datax[4];
+	memcpy(&datax, &_value, 4);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x43);
+	this->wire->write(datax, 4); 
+	this->wire->endTransmission();
+}
+void Mecanum::Set_motor4(float _value){
+	_value = value_limit(_value, -3.0, 3.0);
+	byte datax[4];
+	memcpy(&datax, &_value, 4);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x44);
+	this->wire->write(datax, 4); 
+	this->wire->endTransmission();
+}
+void Mecanum::Reset_counter_motor1(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x45);
+	this->wire->endTransmission();
+}
+void Mecanum::Reset_counter_motor2(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x46);
+	this->wire->endTransmission();
+}
+void Mecanum::Reset_counter_motor3(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x47);
+	this->wire->endTransmission();
+}
+void Mecanum::Reset_counter_motor4(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x48);
+	this->wire->endTransmission();
+}
 float Mecanum::Read_battery(){
 	this->wire->beginTransmission(this->addr);
 	this->wire->write(0x20); 
 	this->wire->endTransmission();
-	delay(1);
-	uint8_t res = this->wire->requestFrom(this->addr, 4);
-	delay(1);
-	byte datay[4];
+	this->wire->requestFrom(this->addr,4);
+	uint8_t datay[4];
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	delay(10);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x20); 
+	this->wire->endTransmission();
+	this->wire->requestFrom(this->addr,4);
 	for (int i = 0; i < 4; i++) {
 	    datay[i] =  this->wire->read();
 	}
 	float xxxx = 0;
-	memcpy(&datay, &xxxx, 4);
+	memcpy(&xxxx, &datay, 4);
+	return xxxx;
+}
+int32_t Mecanum::Read_counter_motor1(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x21); 
+	this->wire->endTransmission();
+	this->wire->requestFrom(this->addr, 4);
+	byte datay[4];
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	delay(10);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x21); 
+	this->wire->endTransmission();
+	this->wire->requestFrom(this->addr, 4);
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	int32_t xxxx = 0;
+	memcpy(&xxxx, &datay, 4);
+	return xxxx;
+}
+int32_t Mecanum::Read_counter_motor2(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x22); 
+	this->wire->endTransmission();
+	uint8_t res = this->wire->requestFrom(this->addr, 4);
+	byte datay[4];
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	delay(10);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x22); 
+	this->wire->endTransmission();
+	res = this->wire->requestFrom(this->addr, 4);
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	int32_t xxxx = 0;
+	memcpy(&xxxx, &datay, 4);
+	return xxxx;
+}
+int32_t Mecanum::Read_counter_motor3(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x23); 
+	this->wire->endTransmission();
+	uint8_t res = this->wire->requestFrom(this->addr, 4);
+	byte datay[4];
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	delay(10);
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x23); 
+	this->wire->endTransmission();
+	res = this->wire->requestFrom(this->addr, 4);
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	int32_t xxxx = 0;
+	memcpy(&xxxx, &datay, 4);
+	return xxxx;
+}
+int32_t Mecanum::Read_counter_motor4(){
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x24); 
+	this->wire->endTransmission();
+	uint8_t res = this->wire->requestFrom(this->addr, 4);
+	byte datay[4];
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	this->wire->beginTransmission(this->addr);
+	this->wire->write(0x24); 
+	this->wire->endTransmission();
+	res = this->wire->requestFrom(this->addr, 4);
+	for (int i = 0; i < 4; i++) {
+	    datay[i] =  this->wire->read();
+	}
+	int32_t xxxx = 0;
+	memcpy(&xxxx, &datay, 4);
 	return xxxx;
 }
 #endif
